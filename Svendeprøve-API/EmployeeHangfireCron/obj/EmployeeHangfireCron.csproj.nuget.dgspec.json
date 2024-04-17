@@ -1,0 +1,85 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\git\\Mock-Svendeproeve\\Svendeprøve-API\\EmployeeHangfireCron\\EmployeeHangfireCron.csproj": {}
+  },
+  "projects": {
+    "D:\\git\\Mock-Svendeproeve\\Svendeprøve-API\\EmployeeHangfireCron\\EmployeeHangfireCron.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\git\\Mock-Svendeproeve\\Svendeprøve-API\\EmployeeHangfireCron\\EmployeeHangfireCron.csproj",
+        "projectName": "EmployeeHangfireCron",
+        "projectPath": "D:\\git\\Mock-Svendeproeve\\Svendeprøve-API\\EmployeeHangfireCron\\EmployeeHangfireCron.csproj",
+        "packagesPath": "C:\\Users\\adam.winther\\.nuget\\packages\\",
+        "outputPath": "D:\\git\\Mock-Svendeproeve\\Svendeprøve-API\\EmployeeHangfireCron\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\adam.winther\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.optimizely.com/feed/packages.svc/": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Hangfire.AspNetCore": {
+              "target": "Package",
+              "version": "[1.8.*, )"
+            },
+            "Hangfire.Core": {
+              "target": "Package",
+              "version": "[1.8.*, )"
+            },
+            "Hangfire.SqlServer": {
+              "target": "Package",
+              "version": "[1.8.*, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[*, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

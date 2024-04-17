@@ -1,0 +1,6 @@
+<form (submit)="login(); $event.preventDefault()">
+  <input type="text" [(ngModel)]="username" placeholder="Username" name="username">
+  <input type="password" [(ngModel)]="password" placeholder="Password" name="password">
+  <button type="submit">Login</button>
+</form>
+<p *ngIf="errorMessage">{{ errorMessage }}</p>

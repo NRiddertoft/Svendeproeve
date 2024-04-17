@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Alice Johnson",
+    "studios": "Copenhagen",
+    "jobTitle": "Software Engineer",
+    "projects": ["Project Alpha"],
+    "expertise": ["Java", "React"],
+    "image": "/images/MockPhoto2.jpg"
+  },
+  {
+    "name": "Bob Smith",
+    "studios": "Copenhagen",
+    "jobTitle": "Network Engineer",
+    "projects": ["Project Delta"],
+    "expertise": ["Cybersecurity"],
+    "image": "/images/MockPhoto1.jpg"
+  },
+  {
+    "name": "Carol White",
+    "studios": "Aarhus",
+    "jobTitle": "QA Specialist",
+    "projects": ["Project Gamma"],
+    "expertise": ["Automated Testing", "Manual Testing"],
+    "image": "/images/MockPhoto3.jpg"
+  },
+  {
+    "name": "David Brown",
+    "studios": "Aarhus",
+    "jobTitle": "Data Scientist",
+    "projects": ["Project Beta"],
+    "expertise": ["Python", "Machine Learning"],
+    "image": "/images/MockPhoto4.jpg"
+  }
+]

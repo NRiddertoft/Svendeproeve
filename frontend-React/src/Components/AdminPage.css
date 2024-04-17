@@ -1,0 +1,124 @@
+.front-page {
+    background-color: black;
+    min-height: 100vh;
+    width: 100vw;
+    color: white;
+    padding-top: 15%; /* Space from the top of the page to the search bar */
+    
+  }
+
+  .header {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    padding: 20px; /* Adjust as needed */
+  }
+  
+  .search-container {
+    margin-top: 25px; /* Add some space above the search bar */
+    display: flex;
+    align-items: center;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto; /* Center the search bar */
+    margin-bottom: 1%;
+  }
+  
+  .search-container .magnifying-glass {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .search-container .search-input {
+    flex-grow: 1; /* Let the input take the remaining space */
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    padding: 5px;
+    font-size: 16px;
+    color: white;
+  }
+  
+  .search-container .search-input::placeholder {
+    color: white;
+  }
+  
+  .search-container .search-input:focus {
+    outline: none;
+  }
+  .search-input {
+    display: flex; /* To align tags and input field */
+    flex-wrap: wrap;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+    font-size: 16px;
+    color: white;
+    width: 95%;
+  }
+  
+  .people-container {
+    display: flex; /* Use flexbox layout */
+    flex-wrap: wrap; /* Wrap items to next line if they don't fit */
+    justify-content: space-around; /* Distribute space evenly around items */
+    padding: 20px 0;
+    padding-top: 0;
+  }
+  
+  .person {
+    flex-basis: 20%; /* Each person takes up roughly 20% of the container width */
+    margin-bottom: 20px; /* Space between rows */
+    text-align: center; /* Center-align the content within each person div */
+  }
+  
+  .person img {
+    width: 80%; /* Adjust the image size as needed */
+    height: auto;
+    border-radius: 5px;
+    background: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .filters-actions {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center;
+    gap: 20px;
+    margin-top: 5px; /* Space below the search bar */
+    margin-left: 5%; /* Align with the left edge of the search bar */
+    margin-bottom: 2%;
+  }
+  
+  .filters-panels {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly between filter panels */
+    margin-top: 10px;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-bottom: 2%;
+  }
+  
+  .filter-panel {
+    text-align: center;
+  }
+  
+  .filter-panel h3 {
+    color: white;
+  }
+
+  .filters-button{
+    margin-left: 10px;
+  }
+  
+  .filter-panel div {
+    cursor: pointer;
+    color: white;
+  }
+  
+  /* Used for filter later on */
+  .selected {
+    text-decoration: line-through;
+  }
+  
