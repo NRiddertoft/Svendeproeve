@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\git\\Mock-Svendeproeve\\Svendeprøve-API\\Svendeprøve\\EmployeeAPI.csproj": {}
+    "D:\\git\\Svendeproeve\\Svendeprøve-API\\Svendeprøve\\EmployeeAPI.csproj": {}
   },
   "projects": {
-    "D:\\git\\Mock-Svendeproeve\\Svendeprøve-API\\Svendeprøve\\EmployeeAPI.csproj": {
+    "D:\\git\\Svendeproeve\\Svendeprøve-API\\Svendeprøve\\EmployeeAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\git\\Mock-Svendeproeve\\Svendeprøve-API\\Svendeprøve\\EmployeeAPI.csproj",
+        "projectUniqueName": "D:\\git\\Svendeproeve\\Svendeprøve-API\\Svendeprøve\\EmployeeAPI.csproj",
         "projectName": "EmployeeAPI",
-        "projectPath": "D:\\git\\Mock-Svendeproeve\\Svendeprøve-API\\Svendeprøve\\EmployeeAPI.csproj",
+        "projectPath": "D:\\git\\Svendeproeve\\Svendeprøve-API\\Svendeprøve\\EmployeeAPI.csproj",
         "packagesPath": "C:\\Users\\adam.winther\\.nuget\\packages\\",
-        "outputPath": "D:\\git\\Mock-Svendeproeve\\Svendeprøve-API\\Svendeprøve\\obj\\",
+        "outputPath": "D:\\git\\Svendeproeve\\Svendeprøve-API\\Svendeprøve\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\adam.winther\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -23,7 +23,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.optimizely.com/feed/packages.svc/": {}
+          "https://nuget.optimizely.com/feed/packages.svc/": {},
+          "https://www.myget.org/F/umbdeploy/api/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -35,12 +36,25 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Algolia.Search": {
+              "target": "Package",
+              "version": "[7.0.0-beta.2, )"
+            },
+            "EntityFrameworkCore.EncryptColumn": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.12, )"
@@ -83,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
