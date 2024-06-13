@@ -25,7 +25,7 @@ namespace Shared
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
             dbContextOptionsBuilder.UseSqlServer(
-                @"Server=CPH00301;Database=TeamFinder;Integrated Security=True;TrustServerCertificate=True");
+                @"Server=CPH00301;Database=SvendeProve;Integrated Security=True;TrustServerCertificate=True");
             //dbContextOptionsBuilder.UseSqlServer(
             //    @"Server=10.22.24.204;Database=TeamFinder_Europe;User Id=tmfndr;Password=Flodhest13;TrustServerCertificate=True");
         }
@@ -33,10 +33,11 @@ namespace Shared
         public DbSet<User> Users { get; set; }
 
         public DbSet<Skill> Skills { get; set; }
-        public DbSet<SkillRequest> SkillRequests { get; set; }
 
+        //public DbSet<SkillRequest> SkillRequests { get; set; }
         public DbSet<Solution> Solutions { get; set; }
         public DbSet<OfficeLocation> OfficeLocations { get; set; }
+
         public DbSet<JobTitle> JobTitles { get; set; }
         //public DbSet<WhitelistUser> WhitelistUsers { get; set; }
 
