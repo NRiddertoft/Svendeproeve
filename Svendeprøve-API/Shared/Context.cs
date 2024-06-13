@@ -14,12 +14,12 @@ namespace Shared
 
         public Context()
         {
-            _provider = new GenerateEncryptionProvider("B6WklDuVI4OoYQsYF8Ra3tufVt7BHaeW");
+            _provider = new GenerateEncryptionProvider("3c80c9d4a2a75b05441e677f5d276933");
         }
 
         public Context(DbContextOptions<Context> options) : base(options)
         {
-            _provider = new GenerateEncryptionProvider("B6WklDuVI4OoYQsYF8Ra3tufVt7BHaeW");
+            _provider = new GenerateEncryptionProvider("3c80c9d4a2a75b05441e677f5d276933");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
