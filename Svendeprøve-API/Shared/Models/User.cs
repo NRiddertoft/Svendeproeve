@@ -5,8 +5,7 @@ namespace Shared.Models
     public class User
     {
         public int Id { get; set; }
-
-        //public string AzureId { get; set; }
+        public int ExternalId { get; set; }
 
         [EncryptColumn] public string DisplayName { get; set; }
 
@@ -26,11 +25,6 @@ namespace Shared.Models
 
         //public int? ImageSize { get; set; }
 
-        //[EncryptColumn] public string? SlackName { get; set; }
-
-        //public bool? AccountEnabled { get; set; }
-
-        // TODO KINGO: Add an active/inactive boolean flag here
 
         /// <summary>
         /// Compare all properties except Id and hash
@@ -57,10 +51,10 @@ namespace Shared.Models
             // TODO KINGO: Add an active/inactive boolean flag here in above return
         }
 
-        public override int GetHashCode()
-        {
-            // Generate hash code based on properties
-            return HashCode.Combine(DisplayName, UserPrincipalName, OfficeLocation, JobTitle);
-        }
+        //public override int GetHashCode()
+        //{
+        //    // Generate hash code based on properties
+        //    return HashCode.Combine(DisplayName, UserPrincipalName, OfficeLocation, JobTitle);
+        //}
     }
 }

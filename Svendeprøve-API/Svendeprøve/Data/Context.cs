@@ -23,12 +23,12 @@ namespace EmployeeAPI.Data
                 new()
                 {
                     Id = 2, Email = "Jane@test.com", ImageUrl = "testurl2.com", JobTitle = "Senior Developer",
-                    Location = "Copenhagen", Name = "Jane Johnson"
+                    Location = "Oslo", Name = "Jane Johnson"
                 },
                 new()
                 {
                     Id = 3, Email = "Bob@test.com", ImageUrl = "testurl3.com", JobTitle = "Project Manager",
-                    Location = "Copenhagen", Name = "Bob Johnson"
+                    Location = "Oslo", Name = "Bob Johnson"
                 },
                 new()
                 {
@@ -43,17 +43,17 @@ namespace EmployeeAPI.Data
                 new()
                 {
                     Id = 6, Email = "David@test.com", ImageUrl = "testurl6.com", JobTitle = "Software Engineer",
-                    Location = "Copenhagen", Name = "David Johnson"
+                    Location = "London", Name = "David Johnson"
                 },
                 new()
                 {
                     Id = 7, Email = "Eva@test.com", ImageUrl = "testurl7.com", JobTitle = "UX Designer",
-                    Location = "Copenhagen", Name = "Eva Johnson"
+                    Location = "London", Name = "Eva Johnson"
                 },
                 new()
                 {
                     Id = 8, Email = "Frank@test.com", ImageUrl = "testurl8.com", JobTitle = "Data Analyst",
-                    Location = "Copenhagen", Name = "Frank Johnson"
+                    Location = "London", Name = "Frank Johnson"
                 },
                 new()
                 {
@@ -73,7 +73,7 @@ namespace EmployeeAPI.Data
                 new()
                 {
                     Id = 12, Email = "Jack@test.com", ImageUrl = "testurl12.com", JobTitle = "Frontend Developer",
-                    Location = "Copenhagen", Name = "Jack Johnson"
+                    Location = "Oslo", Name = "Jack Johnson"
                 },
                 new()
                 {
@@ -83,32 +83,32 @@ namespace EmployeeAPI.Data
                 new()
                 {
                     Id = 14, Email = "Larry@test.com", ImageUrl = "testurl14.com", JobTitle = "Database Administrator",
-                    Location = "Copenhagen", Name = "Larry Johnson"
+                    Location = "Washington D.C.", Name = "Larry Johnson"
                 },
                 new()
                 {
                     Id = 15, Email = "Mona@test.com", ImageUrl = "testurl15.com", JobTitle = "System Analyst",
-                    Location = "Copenhagen", Name = "Mona Johnson"
+                    Location = "Washington D.C.", Name = "Mona Johnson"
                 },
                 new()
                 {
                     Id = 16, Email = "Nancy@test.com", ImageUrl = "testurl16.com", JobTitle = "Network Engineer",
-                    Location = "Copenhagen", Name = "Nancy Johnson"
+                    Location = "Washington D.C.", Name = "Nancy Johnson"
                 },
                 new()
                 {
                     Id = 17, Email = "Oscar@test.com", ImageUrl = "testurl17.com", JobTitle = "Security Analyst",
-                    Location = "Copenhagen", Name = "Oscar Johnson"
+                    Location = "New York", Name = "Oscar Johnson"
                 },
                 new()
                 {
                     Id = 18, Email = "Paul@test.com", ImageUrl = "testurl18.com", JobTitle = "Full Stack Developer",
-                    Location = "Copenhagen", Name = "Paul Johnson"
+                    Location = "New York", Name = "Paul Johnson"
                 },
                 new()
                 {
                     Id = 19, Email = "Quincy@test.com", ImageUrl = "testurl19.com", JobTitle = "Data Scientist",
-                    Location = "Copenhagen", Name = "Quincy Johnson"
+                    Location = "New York", Name = "Quincy Johnson"
                 },
                 new()
                 {
