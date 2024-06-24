@@ -16,6 +16,7 @@ html {
   padding: 20px;
   height: 100vh;
   background-color: #000 !important;
+  overflow-y: auto; /* Add scroll if content overflows */
 }
 
 .header {
@@ -120,24 +121,30 @@ h1 {
   cursor: pointer;
 }
 
+.people-section {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.people-section h2 {
+  color: #fff !important;
+}
+
+.person-card {
+  background-color: #1c1c1c;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.person-card p {
+  margin: 5px 0;
+}
+
 .admin-content,
 .user-content {
   margin-bottom: 20px;
-}
-
-.action-button {
-  background-color: #d3d3d3 !important;
-  color: #000 !important;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.action-button:hover {
-  background-color: #bfbfbf !important;
 }
 
 p {

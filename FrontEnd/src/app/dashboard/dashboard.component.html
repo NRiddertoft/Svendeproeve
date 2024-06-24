@@ -54,6 +54,18 @@
     </div>
   </div>
 
+  <div class="people-section">
+    <h2>People</h2>
+    <div *ngFor="let person of data" class="person-card">
+      <p><strong>Name:</strong> {{ person.Name }}</p>
+      <p><strong>Age:</strong> {{ person.Age }}</p>
+      <p><strong>Studio:</strong> {{ person.Studio }}</p>
+      <p><strong>Job title:</strong> {{ person.JobTitle }}</p>
+      <p><strong>Projects:</strong> {{ person.Projects.join(", ") }}</p>
+      <p><strong>Expertise:</strong> {{ person.Expertise }}</p>
+    </div>
+  </div>
+
   <div *ngIf="role === 'admin'" class="admin-content">
     <!-- Admin-specific content -->
   </div>
