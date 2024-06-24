@@ -28,32 +28,28 @@
     <div class="content-section">
       <h2>Studios</h2>
       <ul>
-        <li *ngFor="let person of data">{{ person.Studio }}</li>
+        <li *ngFor="let studio of uniqueStudios">{{ studio }}</li>
       </ul>
     </div>
 
     <div class="content-section">
       <h2>Job titles</h2>
       <ul>
-        <li *ngFor="let person of data">{{ person.JobTitle }}</li>
+        <li *ngFor="let jobTitle of uniqueJobTitles">{{ jobTitle }}</li>
       </ul>
     </div>
 
     <div class="content-section">
       <h2>Projects</h2>
       <ul>
-        <li *ngFor="let person of data">
-          <ul>
-            <li *ngFor="let project of person.Projects">{{ project }}</li>
-          </ul>
-        </li>
+        <li *ngFor="let project of uniqueProjects">{{ project }}</li>
       </ul>
     </div>
 
     <div class="content-section">
       <h2>Expertise</h2>
       <ul>
-        <li *ngFor="let person of data">{{ person.Expertise }}</li>
+        <li *ngFor="let expertise of uniqueExpertise">{{ expertise }}</li>
       </ul>
     </div>
   </div>

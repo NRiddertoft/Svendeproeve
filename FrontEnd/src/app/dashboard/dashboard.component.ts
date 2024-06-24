@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../app.routes'; // Adjust the path if necessary
-import mockData from '../../assets/mock-data.json';
+import { AuthService } from '../app.routes';
+import * as mockData from '../../assets/mock-data.json';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +9,11 @@ import mockData from '../../assets/mock-data.json';
 })
 export class DashboardComponent implements OnInit {
   role: string | null = null;
-  data: any[] = mockData;
+  data: any[] = (mockData as any).default;
+  uniqueStudios: string[] = [];
+  uniqueJobTitles: string[] = [];
+  uniqueProjects: string[] = [];
+  uniqueExpertise: string[] = [];
 
   constructor(private authService: AuthService) {}
 
@@ -18,13 +22,26 @@ export class DashboardComponent implements OnInit {
     if (currentUser && currentUser.role) {
       this.role = currentUser.role;
     }
+
+    // Remove duplicates
+    this.uniqueStudios = [...new Set(this.data.map((person) => person.Studio))];
+    this.uniqueJobTitles = [
+      ...new Set(this.data.map((person) => person.JobTitle)),
+    ];
+    this.uniqueProjects = [
+      ...new Set(this.data.flatMap((person) => person.Projects)),
+    ];
+    this.uniqueExpertise = [
+      ...new Set(this.data.map((person) => person.Expertise)),
+    ];
   }
 
-  editContent() {
-    console.log('Edit clicked');
-  }
   logout() {
     console.log('Logout clicked');
     this.authService.logout();
+  }
+
+  editContent() {
+    console.log('Edit content clicked');
   }
 }
