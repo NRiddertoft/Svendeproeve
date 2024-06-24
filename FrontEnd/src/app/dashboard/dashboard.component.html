@@ -1,19 +1,19 @@
-<div>
-    <h1>Dashboard</h1>
-    <div *ngIf="role === 'admin'">
-      <!-- Admin-specific content -->
-      <button (click)="editContent()">Edit Content</button>
-    </div>
-    <div *ngIf="role === 'user'">
-      <!-- User-specific content -->
-      <p>You can view content, but cannot edit it.</p>
-    </div>
-    <button (click)="logout()">Logout</button>
-  </div>
-  <!-- Dashboard Component Template -->
-<div>
-    <h1>Dashboard</h1>
-    <button (click)="logout()">Logout</button>
-</div>
+<div class="dashboard-container">
+  <h1>Dashboard</h1>
+  <p class="welcome-message" *ngIf="role === 'admin'">
+    You are logged in as administrator.
+  </p>
+  <p class="welcome-message" *ngIf="role === 'user'">
+    You are logged in as user.
+  </p>
 
-  
+  <div *ngIf="role === 'admin'" class="admin-content">
+    <!-- Admin-specific content -->
+    <button (click)="editContent()" class="action-button">Edit Content</button>
+  </div>
+  <div *ngIf="role === 'user'" class="user-content">
+    <!-- User-specific content -->
+    <p>You can view content, but cannot edit it.</p>
+  </div>
+  <button (click)="logout()" class="logout-button">Logout</button>
+</div>

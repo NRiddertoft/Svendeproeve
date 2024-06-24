@@ -1,0 +1,53 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #000;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+h1 {
+  color: black;
+  margin-bottom: 20px;
+}
+
+.welcome-message {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.admin-content,
+.user-content {
+  margin-bottom: 20px;
+}
+
+.action-button,
+.logout-button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.action-button:hover,
+.logout-button:hover {
+  background-color: black;
+}
+
+p {
+  margin: 10px 0;
+  color: black;
+}
