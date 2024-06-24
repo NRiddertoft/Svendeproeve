@@ -7,7 +7,7 @@
         public string UserPrincipalName { get; set; }
         public string? OfficeLocation { get; set; }
         public string? JobTitle { get; set; }
-        public bool HasImage { get; set; }
+        //public bool HasImage { get; set; }
 
         // TODO KINGO: Add an active/inactive boolean flag here
 
