@@ -14,6 +14,13 @@ export class DashboardComponent implements OnInit {
   uniqueJobTitles: string[] = [];
   uniqueProjects: string[] = [];
   uniqueExpertise: string[] = [];
+  filteredData: any[] = this.data;
+  selectedFilters: any = {
+    Studio: new Set<string>(),
+    JobTitle: new Set<string>(),
+    Projects: new Set<string>(),
+    Expertise: new Set<string>(),
+  };
 
   constructor(private authService: AuthService) {}
 
@@ -43,5 +50,34 @@ export class DashboardComponent implements OnInit {
 
   editContent() {
     console.log('Edit content clicked');
+  }
+
+  filterBy(property: string, value: string) {
+    if (this.selectedFilters[property].has(value)) {
+      this.selectedFilters[property].delete(value);
+    } else {
+      this.selectedFilters[property].add(value);
+    }
+    this.applyFilters();
+  }
+
+  applyFilters() {
+    this.filteredData = this.data.filter((person) => {
+      const studioMatch =
+        !this.selectedFilters.Studio.size ||
+        this.selectedFilters.Studio.has(person.Studio);
+      const jobTitleMatch =
+        !this.selectedFilters.JobTitle.size ||
+        this.selectedFilters.JobTitle.has(person.JobTitle);
+      const projectMatch =
+        !this.selectedFilters.Projects.size ||
+        person.Projects.some((project: string) =>
+          this.selectedFilters.Projects.has(project)
+        );
+      const expertiseMatch =
+        !this.selectedFilters.Expertise.size ||
+        this.selectedFilters.Expertise.has(person.Expertise);
+      return studioMatch && jobTitleMatch && projectMatch && expertiseMatch;
+    });
   }
 }
