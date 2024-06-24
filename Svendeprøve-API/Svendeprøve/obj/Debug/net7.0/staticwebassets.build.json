@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "s4NnfelhxpcOvO8rzJdGfnanUrEu3B9+fnhtDFw7SeE=",
-  "Source": "EmployeeAPI",
-  "BasePath": "_content/EmployeeAPI",
+  "Hash": "xtaSQe7ntdudErX4TBHKYXhbUMEq1JkEyDNdMK+eTaA=",
+  "Source": "ExternalEmployeeAPI",
+  "BasePath": "_content/ExternalEmployeeAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
