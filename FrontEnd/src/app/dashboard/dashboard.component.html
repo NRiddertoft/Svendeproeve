@@ -1,5 +1,17 @@
 <div class="dashboard-container">
-  <h1>Dashboard</h1>
+  <div class="header">
+    <h1>Dashboard</h1>
+    <div class="top-right-buttons">
+      <button
+        *ngIf="role === 'admin'"
+        (click)="editContent()"
+        class="action-button"
+      >
+        Edit Content
+      </button>
+      <button (click)="logout()" class="logout-button">Logout</button>
+    </div>
+  </div>
   <p class="welcome-message" *ngIf="role === 'admin'">
     You are logged in as administrator.
   </p>
@@ -7,13 +19,50 @@
     You are logged in as user.
   </p>
 
+  <div class="search-container">
+    <input type="text" class="search-bar" placeholder="Search for employee" />
+    <button class="search-button">Search</button>
+  </div>
+
+  <div class="content-sections">
+    <div class="content-section">
+      <h2>Studios</h2>
+      <ul>
+        <li *ngFor="let person of data">{{ person.Studio }}</li>
+      </ul>
+    </div>
+
+    <div class="content-section">
+      <h2>Job titles</h2>
+      <ul>
+        <li *ngFor="let person of data">{{ person.JobTitle }}</li>
+      </ul>
+    </div>
+
+    <div class="content-section">
+      <h2>Projects</h2>
+      <ul>
+        <li *ngFor="let person of data">
+          <ul>
+            <li *ngFor="let project of person.Projects">{{ project }}</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content-section">
+      <h2>Expertise</h2>
+      <ul>
+        <li *ngFor="let person of data">{{ person.Expertise }}</li>
+      </ul>
+    </div>
+  </div>
+
   <div *ngIf="role === 'admin'" class="admin-content">
     <!-- Admin-specific content -->
-    <button (click)="editContent()" class="action-button">Edit Content</button>
   </div>
   <div *ngIf="role === 'user'" class="user-content">
     <!-- User-specific content -->
     <p>You can view content, but cannot edit it.</p>
   </div>
-  <button (click)="logout()" class="logout-button">Logout</button>
 </div>
