@@ -11,8 +11,8 @@ namespace Shared.Helpers
 {
     public static class AlgoliaHelperSolutions
     {
-        private const string ApiKey = "1be1d91c9d2d53cedf27773b7de48380";
-        private const string AppId = "TCLIGR23SS";
+        private const string ApiKey = "7f557e37d42067a0fd517105470c4dce";
+        private const string AppId = "W8HB85WO7P";
         private const string IndexName = "dev_TeamFinder_Solutions";
 
         public static async Task Index(IEnumerable<AlgoliaSolution> solutions)

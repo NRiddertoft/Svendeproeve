@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmployeeHangfireCron")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a51ddb716fb618849817bd6142a524930def5b4d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a9a4cfa7be5e2e0531de092b0046b88f37e8b5f")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmployeeHangfireCron")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmployeeHangfireCron")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

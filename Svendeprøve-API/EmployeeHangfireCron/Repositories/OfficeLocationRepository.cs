@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EmployeeHangfireCron.Algolia;
+using Microsoft.EntityFrameworkCore;
 using Shared;
+using Shared.Helpers;
 using Shared.Models;
 
 namespace GraphCronJob.Repositories
@@ -27,9 +29,14 @@ namespace GraphCronJob.Repositories
 
                 var locations = new List<OfficeLocation> { location };
 
-                // TODO: Add algolia
-                //var algLocations = AlgoliaHelperOfficeLocations.TransformToAlgolia(locations);
-                //await AlgoliaHelperOfficeLocations.Index(algLocations);
+                // Load Algolia settings
+                var algoliaSettings = AlgoliaHelper.LoadAlgoliaSettings();
+
+                // Transform locations to Algolia format
+                var algLocations = AlgoliaHelperOfficeLocations.TransformToAlgolia(locations);
+
+                // Index locations with Algolia settings
+                await AlgoliaHelperOfficeLocations.Index(algLocations, algoliaSettings);
             }
             catch (Exception e)
             {

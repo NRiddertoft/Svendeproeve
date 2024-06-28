@@ -6,36 +6,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EmployeeHangfireCron.Algolia;
 
 namespace Shared.Helpers
 {
     public static class AlgoliaHelperOfficeLocations
     {
-        private const string ApiKey = "1be1d91c9d2d53cedf27773b7de48380";
-        private const string AppId = "TCLIGR23SS";
-        private const string IndexName = "dev_TeamFinder_OfficeLocations";
-
-        public static async Task Index(IEnumerable<AlgoliaOfficeLocation> officeLocations)
+        public static async Task Index(IEnumerable<AlgoliaOfficeLocation> officeLocations, AlgoliaSettings settings)
         {
-            var client = new SearchClient(AppId, ApiKey);
-            var index = client.InitIndex(IndexName);
+            var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
+            var index = client.InitIndex(settings.Index);
 
             await index.SaveObjectsAsync(officeLocations);
         }
 
-        public static async Task PartialUpdate(IEnumerable<AlgoliaOfficeLocation> officeLocations)
+        public static async Task PartialUpdate(IEnumerable<AlgoliaOfficeLocation> officeLocations,
+            AlgoliaSettings settings)
         {
-            var client = new SearchClient(AppId, ApiKey);
-            var index = client.InitIndex(IndexName);
+            var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
+            var index = client.InitIndex(settings.Index);
 
             // TODO: Set autoGenerateObjectIDIfNotExist to true
             await index.PartialUpdateObjectsAsync(officeLocations, new RequestOptions());
         }
 
-        public static async Task Delete(IEnumerable<string> objectIds)
+        public static async Task Delete(IEnumerable<string> objectIds, AlgoliaSettings settings)
         {
-            var client = new SearchClient(AppId, ApiKey);
-            var index = client.InitIndex(IndexName);
+            var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
+            var index = client.InitIndex(settings.Index);
 
             // TODO: Set autoGenerateObjectIDIfNotExist to true
             await index.DeleteObjectsAsync(objectIds, new RequestOptions());
