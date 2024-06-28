@@ -11,10 +11,6 @@ namespace Shared.Helpers
 {
     public static class AlgoliaHelperSkills
     {
-        private const string ApiKey = "1be1d91c9d2d53cedf27773b7de48380";
-        private const string AppId = "TCLIGR23SS";
-        private const string IndexName = "dev_TeamFinder_Skills";
-
         public static async Task Index(IEnumerable<AlgoliaSkill> skills)
         {
             var client = new SearchClient(AppId, ApiKey);
