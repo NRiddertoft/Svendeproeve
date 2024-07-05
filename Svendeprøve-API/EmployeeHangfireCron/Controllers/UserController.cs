@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EmployeeHangfireCron.Algolia;
+using Microsoft.AspNetCore.Mvc;
 using Shared;
+using Shared.Helpers;
 using Shared.Models;
 
 namespace GraphCronJob.Controllers
@@ -22,7 +24,7 @@ namespace GraphCronJob.Controllers
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        public async Task<List<User>> PostUsersAndUpdate(List<User> adUsers)
+        public async Task<List<User>> PostUsersAndUpdate(List<User> adUsers, AlgoliaSettings settings)
         {
             var usersToUpdate = new List<User>();
             var usersToIndex = new List<User>();
@@ -68,26 +70,26 @@ namespace GraphCronJob.Controllers
                 Console.WriteLine(e);
             }
 
-            /*try
+            try
             {
                 // TODO: Add this
                 // Update Algolia
                 if (usersToUpdate.Count != 0)
                 {
                     var usersToUpdateAlgolia = AlgoliaHelperUsers.TransformToAlgolia(usersToUpdate);
-                    await AlgoliaHelperUsers.PartialUpdate(usersToUpdateAlgolia);
+                    await AlgoliaHelperUsers.PartialUpdate(usersToUpdateAlgolia, settings);
                 }
 
                 if (usersToIndex.Count != 0)
                 {
                     var usersToIndexAlgolia = AlgoliaHelperUsers.TransformToAlgolia(usersToIndex);
-                    await AlgoliaHelperUsers.Index(usersToIndexAlgolia);
+                    await AlgoliaHelperUsers.Index(usersToIndexAlgolia, settings);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-            }*/
+            }
 
             // TODO: do not return a list of users that's the same as we started with.
             // Will maybe break Hangfire if we change
@@ -130,7 +132,7 @@ namespace GraphCronJob.Controllers
         //}
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        public async Task<ActionResult<int>> DeleteUsers(List<User> users)
+        public async Task<ActionResult<int>> DeleteUsers(List<User> users, AlgoliaSettings settings)
         {
             _context.Users.RemoveRange(users);
 
@@ -157,7 +159,7 @@ namespace GraphCronJob.Controllers
 
                 await _context.SaveChangesAsync();
 
-                var idsToDelete = users.Select(x => x.ExternalId).ToList();
+                var idsToDelete = users.Select(x => x.ExternalId.ToString()).ToList();
 
                 if (idsToDelete.Count == 0)
                 {
@@ -165,7 +167,7 @@ namespace GraphCronJob.Controllers
                 }
 
                 // TODO: Add algolia
-                //await AlgoliaHelperUsers.Delete(idsToDelete);
+                await AlgoliaHelperUsers.Delete(idsToDelete, settings);
 
                 return Ok(idsToDelete.Count);
             }

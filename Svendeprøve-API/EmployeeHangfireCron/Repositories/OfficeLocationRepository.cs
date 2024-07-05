@@ -20,7 +20,7 @@ namespace GraphCronJob.Repositories
             return await _context.OfficeLocations.ToListAsync();
         }
 
-        public async Task PostOfficeLocation(OfficeLocation location)
+        public async Task PostOfficeLocation(OfficeLocation location, AlgoliaSettings algoliaSettings)
         {
             try
             {
@@ -29,8 +29,6 @@ namespace GraphCronJob.Repositories
 
                 var locations = new List<OfficeLocation> { location };
 
-                // Load Algolia settings
-                var algoliaSettings = AlgoliaHelper.LoadAlgoliaSettings();
 
                 // Transform locations to Algolia format
                 var algLocations = AlgoliaHelperOfficeLocations.TransformToAlgolia(locations);
@@ -44,7 +42,7 @@ namespace GraphCronJob.Repositories
             }
         }
 
-        public async Task DeleteOfficeLocation(int id)
+        public async Task DeleteOfficeLocation(int id, AlgoliaSettings algoliaSettings)
         {
             try
             {
@@ -57,10 +55,9 @@ namespace GraphCronJob.Repositories
                 _context.OfficeLocations.Remove(location);
                 await _context.SaveChangesAsync();
 
-                // TODO: Add algolia
-                //List<string> idsToDelete = new() { id.ToString() };
+                List<string> idsToDelete = new() { id.ToString() };
 
-                //await AlgoliaHelperOfficeLocations.Delete(idsToDelete);
+                await AlgoliaHelperOfficeLocations.Delete(idsToDelete, algoliaSettings);
             }
             catch (Exception e)
             {

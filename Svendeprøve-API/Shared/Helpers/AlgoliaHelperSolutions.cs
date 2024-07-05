@@ -6,22 +6,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EmployeeHangfireCron.Algolia;
 
 namespace Shared.Helpers
 {
     public static class AlgoliaHelperSolutions
     {
-        public static async Task Index(IEnumerable<AlgoliaSolution> solutions)
+        public const string IndexName = "dev_EPFinder_Solutions";
+
+        public static async Task Index(IEnumerable<AlgoliaSolution> solutions, AlgoliaSettings settings)
         {
-            var client = new SearchClient(AppId, ApiKey);
+            var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
             var index = client.InitIndex(IndexName);
 
             await index.SaveObjectsAsync(solutions);
         }
 
-        public static async Task PartialUpdate(IEnumerable<AlgoliaSolution> solutions)
+        public static async Task PartialUpdate(IEnumerable<AlgoliaSolution> solutions, AlgoliaSettings settings)
         {
-            var client = new SearchClient(AppId, ApiKey);
+            var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
             var index = client.InitIndex(IndexName);
 
             // TODO: Set autoGenerateObjectIDIfNotExist to true
@@ -40,9 +43,9 @@ namespace Shared.Helpers
             return algoliaSolutions;
         }
 
-        public static async Task Delete(IEnumerable<string> idsToDelete)
+        public static async Task Delete(IEnumerable<string> idsToDelete, AlgoliaSettings settings)
         {
-            var client = new SearchClient(AppId, ApiKey);
+            var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
             var index = client.InitIndex(IndexName);
 
             // TODO: Set autoGenerateObjectIDIfNotExist to true

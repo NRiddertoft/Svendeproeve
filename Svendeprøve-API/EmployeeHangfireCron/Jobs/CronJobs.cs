@@ -1,4 +1,5 @@
 using EmployeeHangfireCron;
+using EmployeeHangfireCron.Algolia;
 using GraphCronJob.Controllers;
 using GraphCronJob.Repositories;
 using Shared.Models;
@@ -32,9 +33,10 @@ namespace GraphCronJob.Jobs
 
                 var filteredUsers = FilterUsers(users);
 
-                await IndexOfficeLocations(filteredUsers);
-                await IndexJobTitles(filteredUsers);
+                var algoliaSettings = AlgoliaHelper.LoadAlgoliaSettings();
 
+                await IndexOfficeLocations(filteredUsers, algoliaSettings);
+                await IndexJobTitles(filteredUsers, algoliaSettings);
 
                 // TODO: Consider if we need to enrich users
                 // Enrich the AD User object with photos, slack name before saving it.
@@ -42,7 +44,7 @@ namespace GraphCronJob.Jobs
 
                 // I don't know what this list contains or is used for. So I'm not gonna use it for now.
                 var responseUserList = new List<User>();
-                responseUserList.AddRange(await _userController.PostUsersAndUpdate(filteredUsers));
+                responseUserList.AddRange(await _userController.PostUsersAndUpdate(filteredUsers, algoliaSettings));
 
                 var deleteUsers = new List<User>();
 
@@ -58,7 +60,7 @@ namespace GraphCronJob.Jobs
                     }
                 }
 
-                await _userController.DeleteUsers(deleteUsers);
+                await _userController.DeleteUsers(deleteUsers, algoliaSettings);
 
                 // TODO: Add this when caching is setup
                 //await ClearCacheApi();
@@ -136,7 +138,7 @@ namespace GraphCronJob.Jobs
         //    return tempUsers;
         //}
 
-        private async Task IndexOfficeLocations(List<User> users)
+        private async Task IndexOfficeLocations(List<User> users, AlgoliaSettings algoliaSettings)
         {
             // Every location that exists already
             var dbLocations = await _officeLocationRepository.GetOfficeLocations();
@@ -166,21 +168,15 @@ namespace GraphCronJob.Jobs
                 userLocations.Add(uniqueLocation);
             }
 
-            List<OfficeLocation> officesToPost = new();
-
             // This adds each new location to the DB
             foreach (var officeLocation in userLocations)
             {
                 var exists = dbLocations.FirstOrDefault(l => l.LocationName == officeLocation.LocationName);
 
                 if (exists != null) continue;
-                await _officeLocationRepository.PostOfficeLocation(officeLocation);
-
-                officesToPost.Add(officeLocation);
+                await _officeLocationRepository.PostOfficeLocation(officeLocation, algoliaSettings);
             }
 
-
-            List<string> officesToDelete = new();
 
             // This deletes every location that is not in the list of unique locations
             foreach (var location in dbLocations)
@@ -190,12 +186,8 @@ namespace GraphCronJob.Jobs
                 if (loc != null)
                     continue;
 
-                await _officeLocationRepository.DeleteOfficeLocation(location.Id);
-
-                officesToDelete.Add(location.Id.ToString());
+                await _officeLocationRepository.DeleteOfficeLocation(location.Id, algoliaSettings);
             }
-
-            //await AlgoliaHelperOfficeLocations.Delete(officesToDelete);
         }
 
         private static async Task ClearCacheApi()
@@ -204,7 +196,7 @@ namespace GraphCronJob.Jobs
             await client.GetAsync("https://teamfinder-api.akqa.dk/api/user/clearCache");
         }
 
-        private async Task IndexJobTitles(List<User> users)
+        private async Task IndexJobTitles(List<User> users, AlgoliaSettings algoliaSettings)
         {
             // Every jobTitle that exists already
             var dbJobTitles = await _jobTitleRepository.GetJobTitles();
@@ -242,7 +234,7 @@ namespace GraphCronJob.Jobs
 
                 if (exists != null) continue;
 
-                await _jobTitleRepository.PostJobTitle(jobTitles);
+                await _jobTitleRepository.PostJobTitle(jobTitles, algoliaSettings);
 
                 titlesToPost.Add(jobTitles);
             }
@@ -256,7 +248,7 @@ namespace GraphCronJob.Jobs
                 if (title != null)
                     continue;
 
-                await _jobTitleRepository.DeleteJobTitle(jobTitle.Id);
+                await _jobTitleRepository.DeleteJobTitle(jobTitle.Id, algoliaSettings);
 
                 titlesToDelete.Add(jobTitle.Id.ToString());
             }

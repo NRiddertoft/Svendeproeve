@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Helpers\AlgoliaHelperJobTitles.cs" />
-    <Compile Remove="Helpers\AlgoliaHelperSkills.cs" />
-    <Compile Remove="Helpers\AlgoliaHelperSolutions.cs" />
-    <Compile Remove="Helpers\AlgoliaHelperUsers.cs" />
     <Compile Remove="Helpers\ImageHelper.cs" />
   </ItemGroup>
 

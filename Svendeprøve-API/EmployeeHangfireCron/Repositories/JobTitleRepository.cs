@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EmployeeHangfireCron.Algolia;
+using Microsoft.EntityFrameworkCore;
 using Shared.Models;
 using Shared;
+using Shared.Helpers;
 
 namespace GraphCronJob.Repositories
 {
@@ -18,7 +20,7 @@ namespace GraphCronJob.Repositories
             return await _context.JobTitles.ToListAsync();
         }
 
-        public async Task PostJobTitle(JobTitle jobTitle)
+        public async Task PostJobTitle(JobTitle jobTitle, AlgoliaSettings algoliaSettings)
         {
             try
             {
@@ -27,9 +29,8 @@ namespace GraphCronJob.Repositories
 
                 var jobTitles = new List<JobTitle> { jobTitle };
 
-                // TODO: Add algolia
-                //var algJobTitles = AlgoliaHelperJobTitles.TransformToAlgolia(jobTitles);
-                //await AlgoliaHelperJobTitles.Index(algJobTitles);
+                var algJobTitles = AlgoliaHelperJobTitles.TransformToAlgolia(jobTitles);
+                await AlgoliaHelperJobTitles.Index(algJobTitles, algoliaSettings);
             }
             catch (Exception e)
             {
@@ -37,7 +38,7 @@ namespace GraphCronJob.Repositories
             }
         }
 
-        public async Task DeleteJobTitle(int id)
+        public async Task DeleteJobTitle(int id, AlgoliaSettings algoliaSettings)
         {
             try
             {
@@ -50,11 +51,9 @@ namespace GraphCronJob.Repositories
                 _context.JobTitles.Remove(jobTitle);
                 await _context.SaveChangesAsync();
 
+                List<string> idsToDelete = new() { id.ToString() };
 
-                // TODO: Add algolia
-                //List<string> idsToDelete = new() { id.ToString() };
-
-                //await AlgoliaHelperJobTitles.Delete(idsToDelete);
+                await AlgoliaHelperJobTitles.Delete(idsToDelete, algoliaSettings);
             }
             catch (Exception e)
             {

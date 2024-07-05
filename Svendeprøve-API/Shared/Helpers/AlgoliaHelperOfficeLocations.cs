@@ -12,10 +12,12 @@ namespace Shared.Helpers
 {
     public static class AlgoliaHelperOfficeLocations
     {
+        public const string IndexName = "dev_EPFinder_OfficeLocations";
+
         public static async Task Index(IEnumerable<AlgoliaOfficeLocation> officeLocations, AlgoliaSettings settings)
         {
             var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
-            var index = client.InitIndex(settings.Index);
+            var index = client.InitIndex(IndexName);
 
             await index.SaveObjectsAsync(officeLocations);
         }
@@ -24,7 +26,7 @@ namespace Shared.Helpers
             AlgoliaSettings settings)
         {
             var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
-            var index = client.InitIndex(settings.Index);
+            var index = client.InitIndex(IndexName);
 
             // TODO: Set autoGenerateObjectIDIfNotExist to true
             await index.PartialUpdateObjectsAsync(officeLocations, new RequestOptions());
@@ -33,7 +35,7 @@ namespace Shared.Helpers
         public static async Task Delete(IEnumerable<string> objectIds, AlgoliaSettings settings)
         {
             var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
-            var index = client.InitIndex(settings.Index);
+            var index = client.InitIndex(IndexName);
 
             // TODO: Set autoGenerateObjectIDIfNotExist to true
             await index.DeleteObjectsAsync(objectIds, new RequestOptions());

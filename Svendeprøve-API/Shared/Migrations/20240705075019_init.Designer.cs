@@ -12,8 +12,8 @@ using Shared;
 namespace Shared.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240620112734_externalId")]
-    partial class externalId
+    [Migration("20240705075019_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

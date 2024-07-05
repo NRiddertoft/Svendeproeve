@@ -1,5 +1,6 @@
 ﻿using Algolia.Search.Clients;
 using Algolia.Search.Models.Search;
+using Algolia.Search.Models.Settings;
 using Shared.Models;
 
 namespace EmployeeHangfireCron.Algolia
@@ -20,6 +21,24 @@ namespace EmployeeHangfireCron.Algolia
 
             return config.GetRequiredSection("AlgoliaSettings").Get<AlgoliaSettings>() ??
                    throw new Exception("Could not load app settings.");
+        }
+
+        public static void IndexSettings()
+        {
+            IndexSettings settings = new IndexSettings();
+            settings.Ranking = new List<string>
+            {
+                "typo",
+                "geo",
+                "words",
+                "filters",
+                "attribute",
+                "proximity",
+                "exact",
+                "custom"
+            };
+
+            index.SetSettings(settings);
         }
     }
 }

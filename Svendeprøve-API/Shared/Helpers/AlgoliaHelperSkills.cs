@@ -6,31 +6,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EmployeeHangfireCron.Algolia;
 
 namespace Shared.Helpers
 {
     public static class AlgoliaHelperSkills
     {
-        public static async Task Index(IEnumerable<AlgoliaSkill> skills)
+        public const string IndexName = "dev_EPFinder_Skills";
+
+        public static async Task Index(IEnumerable<AlgoliaSkill> skills, AlgoliaSettings settings)
         {
-            var client = new SearchClient(AppId, ApiKey);
+            var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
             var index = client.InitIndex(IndexName);
 
             await index.SaveObjectsAsync(skills);
         }
 
-        public static async Task PartialUpdate(IEnumerable<AlgoliaSkill> skills)
+        public static async Task PartialUpdate(IEnumerable<AlgoliaSkill> skills, AlgoliaSettings settings)
         {
-            var client = new SearchClient(AppId, ApiKey);
+            var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
             var index = client.InitIndex(IndexName);
 
             // TODO: Set autoGenerateObjectIDIfNotExist to true
             await index.PartialUpdateObjectsAsync(skills, new RequestOptions());
         }
 
-        public static async Task Delete(IEnumerable<string> objectIds)
+        public static async Task Delete(IEnumerable<string> objectIds, AlgoliaSettings settings)
         {
-            var client = new SearchClient(AppId, ApiKey);
+            var client = new SearchClient(settings.ApplicationId, settings.WriteApiKey);
             var index = client.InitIndex(IndexName);
 
             // TODO: Set autoGenerateObjectIDIfNotExist to true
